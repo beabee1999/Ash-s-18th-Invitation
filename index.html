@@ -21,15 +21,13 @@
       z-index: 1;
     }
 
-    /* =========================
-       🌊 BUBBLES (LESS CROWDED)
-       ========================= */
+    /* 🌊 BUBBLES - SPACED OUT + LIGHT */
     .bubble {
       position: fixed;
       bottom: -150px;
       border-radius: 50%;
       pointer-events: none;
-      z-index: 2;
+      z-index: 3;
 
       background: radial-gradient(circle at 30% 30%,
         rgba(255,255,255,0.95),
@@ -44,7 +42,6 @@
 
       opacity: 0;
       filter: blur(0.25px);
-
       animation: rise linear infinite;
     }
 
@@ -54,7 +51,7 @@
         opacity: 0;
       }
       10% {
-        opacity: 1;
+        opacity: 0.95;
       }
       100% {
         transform: translateY(-1500px) translateX(120px) scale(1.4);
@@ -62,20 +59,16 @@
       }
     }
 
-    /* =========================
-       🎵 MUSIC SCREEN
-       ========================= */
+    /* 🎵 MUSIC SCREEN */
     #musicScreen {
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-
       background: linear-gradient(135deg, #cfe9ff, #a7d8ff, #e3f4ff);
       position: relative;
       overflow: hidden;
       z-index: 1;
-
       font-family: 'Playfair Display', serif;
     }
 
@@ -91,114 +84,145 @@
     .music-card {
       position: relative;
       z-index: 5;
-
-      width: 85%;
-      max-width: 360px;
-
-      padding: 40px 25px;
-      border-radius: 28px;
-
-      background: rgba(255,255,255,0.55);
+      width: 90%;
+      max-width: 760px;
+      padding: 65px 35px;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.68);
       backdrop-filter: blur(30px);
-
       box-shadow:
-        0 20px 60px rgba(0, 60, 120, 0.2),
-        inset 0 0 25px rgba(255,255,255,0.6);
-
+        0 25px 70px rgba(0, 60, 120, 0.22),
+        inset 0 0 25px rgba(255,255,255,0.7);
       text-align: center;
     }
 
     .music-card h2 {
-      font-size: 26px;
+      font-size: 48px;
       font-weight: 300;
-      line-height: 1.4;
+      line-height: 1.25;
       color: #2a4f6e;
-      margin-bottom: 30px;
+      margin: 0 0 55px;
     }
 
     .btn {
-      width: 100%;
-      padding: 16px;
-      margin: 12px 0;
-
+      display: block;
+      width: 62%;
+      min-width: 280px;
+      margin: 26px auto;
+      padding: 22px 18px;
       border-radius: 14px;
       border: none;
-
-      font-size: 18px;
-      font-weight: 600;
-
+      font-size: 34px;
+      font-weight: 400;
       cursor: pointer;
       transition: all 0.3s ease;
-
+      font-family: 'Playfair Display', serif;
       background: linear-gradient(135deg, #7fc8ff, #a7d8ff);
       color: #0f3554;
-
       box-shadow:
         0 10px 25px rgba(0, 120, 200, 0.3),
         inset 0 0 12px rgba(255,255,255,0.6);
     }
 
     .btn:hover {
-      transform: scale(1.05);
+      transform: scale(1.04);
     }
 
-    /* =========================
-       ⏳ COUNTDOWN (BIGGER & WIDER)
-       ========================= */
-    .countdown {
-      position: fixed;
-      top: 25px;
-      left: 50%;
-      transform: translateX(-50%);
+    /* 📸 CONTENT */
+    #content {
+      display: none;
+      position: relative;
+      z-index: 2;
+    }
 
+    /* ⏳ COUNTDOWN - FIRST APPEARS BEFORE SLIDE 2 */
+    .countdown-wrap {
+      position: sticky;
+      top: 18px;
+      z-index: 8;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: -10px;
+      margin-bottom: -210px;
+      pointer-events: none;
+    }
+
+    .countdown {
+      width: 84%;
+      max-width: 760px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px 40px;
+      gap: 34px 80px;
 
-      padding: 28px 50px;
+      padding: 38px 48px;
       border-radius: 32px;
 
-      background: rgba(167, 216, 255, 0.28);
+      background: rgba(210, 238, 255, 0.75);
       backdrop-filter: blur(24px);
 
-      border: 1px solid rgba(255,255,255,0.45);
+      border: 1px solid rgba(255,255,255,0.55);
 
       box-shadow:
-        0 15px 60px rgba(0, 60, 120, 0.25),
-        inset 0 0 25px rgba(255,255,255,0.35);
-
-      z-index: 6;
+        0 15px 60px rgba(0, 60, 120, 0.22),
+        inset 0 0 25px rgba(255,255,255,0.45);
 
       font-family: 'Playfair Display', serif;
-    }
-
-    .box {
       text-align: center;
     }
 
     .box div {
-      font-size: 44px; /* BIGGER */
+      font-size: 70px;
       font-weight: 300;
-
+      color: #1f4564;
+      line-height: 1;
       text-shadow:
         0 0 12px rgba(200,235,255,0.7),
         0 0 25px rgba(170,220,255,0.5);
     }
 
     .box small {
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      opacity: 0.8;
+      display: block;
+      margin-top: 12px;
+      font-size: 24px;
+      font-weight: 300;
+      color: #2a4f6e;
+      letter-spacing: 1px;
     }
 
-    #content {
-      display: none;
-      padding-top: 140px; /* more space for bigger countdown */
-      position: relative;
-      z-index: 2;
-    }
+    @media (max-width: 600px) {
+      .music-card {
+        max-width: 92%;
+        padding: 55px 22px;
+      }
 
+      .music-card h2 {
+        font-size: 38px;
+      }
+
+      .btn {
+        width: 78%;
+        font-size: 28px;
+      }
+
+      .countdown {
+        width: 82%;
+        gap: 28px 48px;
+        padding: 32px 34px;
+      }
+
+      .box div {
+        font-size: 58px;
+      }
+
+      .box small {
+        font-size: 20px;
+      }
+
+      .countdown-wrap {
+        margin-bottom: -185px;
+      }
+    }
   </style>
 </head>
 
@@ -219,14 +243,19 @@
 
 <div id="content">
 
-  <div class="countdown">
-    <div class="box"><div id="days">0</div><small>Days</small></div>
-    <div class="box"><div id="hours">0</div><small>Hours</small></div>
-    <div class="box"><div id="minutes">0</div><small>Min</small></div>
-    <div class="box"><div id="seconds">0</div><small>Sec</small></div>
+  <!-- SLIDE 1 - countdown does NOT appear here -->
+  <img src="slide1.jpg">
+
+  <!-- COUNTDOWN appears first here, on top of slide 2 -->
+  <div class="countdown-wrap">
+    <div class="countdown">
+      <div class="box"><div id="days">0</div><small>Days</small></div>
+      <div class="box"><div id="hours">0</div><small>Hours</small></div>
+      <div class="box"><div id="minutes">0</div><small>Minutes</small></div>
+      <div class="box"><div id="seconds">0</div><small>Seconds</small></div>
+    </div>
   </div>
 
-  <img src="slide1.jpg">
   <img src="slide2.jpg">
   <img src="slide3.jpg">
   <img src="slide4.jpg">
@@ -236,7 +265,6 @@
 </div>
 
 <script>
-
 function start(playMusic) {
   document.getElementById("musicScreen").style.display = "none";
   document.getElementById("content").style.display = "block";
@@ -267,24 +295,21 @@ setInterval(function () {
     Math.floor((distance % (1000*60)) / 1000);
 }, 1000);
 
-// 🌊 FEWER BUBBLES (MORE SPACING)
-for (let i = 0; i < 45; i++) {  // reduced from 80 → 45
+// 🌊 FEWER, SPACED BUBBLES
+for (let i = 0; i < 42; i++) {
   let bubble = document.createElement("div");
   bubble.className = "bubble";
 
-  let size = 40 + Math.random() * 120;
+  let size = 35 + Math.random() * 115;
 
   bubble.style.width = size + "px";
   bubble.style.height = size + "px";
-
   bubble.style.left = Math.random() * 100 + "vw";
-
   bubble.style.animationDuration = (8 + Math.random() * 12) + "s";
-  bubble.style.animationDelay = Math.random() * 12 + "s";
+  bubble.style.animationDelay = Math.random() * 14 + "s";
 
   document.body.appendChild(bubble);
 }
-
 </script>
 
 </body>
