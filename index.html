@@ -21,7 +21,7 @@
       z-index: 1;
     }
 
-    /* 🌊 BUBBLES - SPACED OUT + LIGHT */
+    /* 🌊 BUBBLES (LIGHT + SPACED) */
     .bubble {
       position: fixed;
       bottom: -150px;
@@ -42,6 +42,7 @@
 
       opacity: 0;
       filter: blur(0.25px);
+
       animation: rise linear infinite;
     }
 
@@ -101,7 +102,7 @@
       font-weight: 300;
       line-height: 1.25;
       color: #2a4f6e;
-      margin: 0 0 55px;
+      margin-bottom: 55px;
     }
 
     .btn {
@@ -109,18 +110,19 @@
       width: 62%;
       min-width: 280px;
       margin: 26px auto;
-      padding: 22px 18px;
+      padding: 22px;
       border-radius: 14px;
       border: none;
       font-size: 34px;
       font-weight: 400;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: 0.3s;
       font-family: 'Playfair Display', serif;
+
       background: linear-gradient(135deg, #7fc8ff, #a7d8ff);
       color: #0f3554;
       box-shadow:
-        0 10px 25px rgba(0, 120, 200, 0.3),
+        0 10px 25px rgba(0,120,200,0.3),
         inset 0 0 12px rgba(255,255,255,0.6);
     }
 
@@ -135,16 +137,16 @@
       z-index: 2;
     }
 
-    /* ⏳ COUNTDOWN - FIRST APPEARS BEFORE SLIDE 2 */
+    /* ⏳ COUNTDOWN (BIG + APPEARS FROM SLIDE 3) */
     .countdown-wrap {
       position: sticky;
-      top: 18px;
-      z-index: 8;
-      width: 100%;
+      top: 20px;
       display: flex;
       justify-content: center;
+      z-index: 8;
+
       margin-top: -10px;
-      margin-bottom: -210px;
+      margin-bottom: -220px;
       pointer-events: none;
     }
 
@@ -155,16 +157,16 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 34px 80px;
 
-      padding: 38px 48px;
+      padding: 40px 50px;
       border-radius: 32px;
 
-      background: rgba(210, 238, 255, 0.75);
+      background: rgba(210,238,255,0.75);
       backdrop-filter: blur(24px);
 
       border: 1px solid rgba(255,255,255,0.55);
 
       box-shadow:
-        0 15px 60px rgba(0, 60, 120, 0.22),
+        0 15px 60px rgba(0,60,120,0.22),
         inset 0 0 25px rgba(255,255,255,0.45);
 
       font-family: 'Playfair Display', serif;
@@ -175,59 +177,21 @@
       font-size: 70px;
       font-weight: 300;
       color: #1f4564;
-      line-height: 1;
-      text-shadow:
-        0 0 12px rgba(200,235,255,0.7),
-        0 0 25px rgba(170,220,255,0.5);
     }
 
     .box small {
       display: block;
-      margin-top: 12px;
+      margin-top: 10px;
       font-size: 24px;
-      font-weight: 300;
       color: #2a4f6e;
-      letter-spacing: 1px;
     }
 
-    @media (max-width: 600px) {
-      .music-card {
-        max-width: 92%;
-        padding: 55px 22px;
-      }
-
-      .music-card h2 {
-        font-size: 38px;
-      }
-
-      .btn {
-        width: 78%;
-        font-size: 28px;
-      }
-
-      .countdown {
-        width: 82%;
-        gap: 28px 48px;
-        padding: 32px 34px;
-      }
-
-      .box div {
-        font-size: 58px;
-      }
-
-      .box small {
-        font-size: 20px;
-      }
-
-      .countdown-wrap {
-        margin-bottom: -185px;
-      }
-    }
   </style>
 </head>
 
 <body>
 
+<!-- 🎵 MUSIC -->
 <div id="musicScreen">
   <div class="music-card">
     <h2>Would you like to play<br>background music?</h2>
@@ -241,12 +205,16 @@
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
+<!-- 📸 CONTENT -->
 <div id="content">
 
-  <!-- SLIDE 1 - countdown does NOT appear here -->
+  <!-- SLIDE 1 -->
   <img src="slide1.jpg">
 
-  <!-- COUNTDOWN appears first here, on top of slide 2 -->
+  <!-- SLIDE 2 -->
+  <img src="slide2.jpg">
+
+  <!-- ⏳ STARTS HERE (SLIDE 3) -->
   <div class="countdown-wrap">
     <div class="countdown">
       <div class="box"><div id="days">0</div><small>Days</small></div>
@@ -256,7 +224,6 @@
     </div>
   </div>
 
-  <img src="slide2.jpg">
   <img src="slide3.jpg">
   <img src="slide4.jpg">
   <img src="slide5.jpg">
@@ -276,6 +243,7 @@ function start(playMusic) {
   }
 }
 
+// COUNTDOWN
 var eventDate = new Date("June 17, 2026 19:00:00").getTime();
 
 setInterval(function () {
@@ -295,7 +263,7 @@ setInterval(function () {
     Math.floor((distance % (1000*60)) / 1000);
 }, 1000);
 
-// 🌊 FEWER, SPACED BUBBLES
+// 🌊 BUBBLES (LESS CROWDED)
 for (let i = 0; i < 42; i++) {
   let bubble = document.createElement("div");
   bubble.className = "bubble";
@@ -304,7 +272,9 @@ for (let i = 0; i < 42; i++) {
 
   bubble.style.width = size + "px";
   bubble.style.height = size + "px";
+
   bubble.style.left = Math.random() * 100 + "vw";
+
   bubble.style.animationDuration = (8 + Math.random() * 12) + "s";
   bubble.style.animationDelay = Math.random() * 14 + "s";
 
